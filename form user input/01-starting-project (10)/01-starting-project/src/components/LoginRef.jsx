@@ -1,22 +1,25 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function Login() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password : ""
-  })
+  const email = useRef();
+  const password = useRef();
+  const [emailValid , setEmailValid] = useState(true);
 
   function onSubmitData(event){
     event.preventDefault();
-  }
+    console.log(email.current.value); // to get the exact email
 
-  function handleInputChange(identifier , event){
-    setFormData((prev) => (
-      {
-        ...prev,
-        [identifier] : event.target.value
-      }
-    ))
+    const emailIsValid = email.current.value.includes("X");
+    console.log(emailIsValid);
+
+    if (!emailIsValid){
+      setEmailValid(false);
+
+      return; // preventing sending http req
+    }
+
+    setEmailValid(true);
+    
   }
 
   return (
@@ -26,12 +29,13 @@ export default function Login() {
       <div className="control-row">
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" value={formData.email} onChange={(event) => handleInputChange("email" ,event)} />
+          <input id="email" name="email" ref={email} />
+          {!emailValid && <p>Email is not valid</p>}
         </div>
 
         <div className="control no-margin">
           <label htmlFor="password">Password</label> {/* htmlfor is like className built in jsx syntax */}
-          <input id="password" type="password" name="password" value={formData.password} onChange={(event) => handleInputChange("password" , event)}/>
+          <input id="password" type="password" name="password" ref={password}/>
         </div>
       </div>
 
