@@ -19,7 +19,7 @@ const router = createBrowserRouter([ // object based approach
     path:"/", element: <Route />,
     errorElement: <ErrorPage />, // this is for when the route is not founded  
     children: [
-      {path : "/" , element : <HomePage />},
+      {path : "/"  ,element : <HomePage />},
       {path: "/product", element: <ProductPage />},
       {path: "/product/:id" , element: <ProductDetail /> } // :id is dynamic part of path which differs from one product to another
     ]

@@ -11,7 +11,8 @@ const ProductDetail = () => {
     <h1>
       for each product we show the dynamic part <p>{param.id}</p>
     </h1>
-    <Link to=".." relative='path'>back</Link> {/* to .. means going back one step and it can be relative to "route" so it goes back to parent route or path that goes bacl one step in url */}
+    <Link to="/p1">product one</Link> 
+    <Link to=".." relative='path'>back</Link> {/* to .. means going back one step and it can be relative to "route" so it goes back to parent route or path that goes back one step in url */}
     </>
   )
 }
