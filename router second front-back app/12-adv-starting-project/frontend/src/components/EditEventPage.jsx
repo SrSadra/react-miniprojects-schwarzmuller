@@ -6,7 +6,7 @@ const EditEventPage = () => {
     const data = useRouteLoaderData("event-detail"); // to access parent loader return
 
   return (
-    <EventForm event={data.event}/> 
+    <EventForm event={data.event} method="PATCH"/> 
   )
 }
 
