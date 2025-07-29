@@ -1,6 +1,6 @@
 import './globals.css'
 
-export const metadata = {
+export const metadata = { // metadata is reserved name for data that should be placed on header part of html
   title: 'NextJS Course App',
   description: 'Your first NextJS app!',
 };
