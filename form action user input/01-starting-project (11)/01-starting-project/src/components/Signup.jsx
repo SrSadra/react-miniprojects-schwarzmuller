@@ -25,7 +25,7 @@ export default function Signup() {
       }} // this enwures if we submit and error occured entered value persist
     }
 
-    return {errors : null};
+    return {errors : null}; // everything is ok
   }
 
 

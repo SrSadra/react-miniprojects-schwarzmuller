@@ -8,8 +8,11 @@ function ErrorPage() {
 
   let title = 'An error occurred!';
   let message = 'Something went wrong!';
+  console.log(error);
+  
 
   if (error.status === 500) {
+    console.log(error.data.message);
     message = error.data.message;
   }
 

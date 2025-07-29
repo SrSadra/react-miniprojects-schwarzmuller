@@ -13,6 +13,7 @@ export default function Login() {
 
   function onSubmitData(event){
     event.preventDefault();
+    
   }
 
   const isEmailvalid = !didEdit.email || formData.email.includes("X");

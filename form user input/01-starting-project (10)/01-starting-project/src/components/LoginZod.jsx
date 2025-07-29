@@ -31,7 +31,7 @@ export default function SignupForm() {
       <div>
         <label>Email:</label>
         <input {...register("email")} className="border p-2 w-full" />
-        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+        {errors.email && <p className="50text-red-0">{errors.email.message}</p>}
       </div>
 
       <div>
