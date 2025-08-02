@@ -1,8 +1,9 @@
 import React from 'react'
+import classes from ""
 
 const LoadingMeals = () => {
   return (
-    <p>
+    <p >
       loading....
     </p>
   )

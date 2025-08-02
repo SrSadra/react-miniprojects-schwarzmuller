@@ -10,7 +10,7 @@ export default function MealItem({ title, slug, image, summary, creator }) {
         <article className={classes.meal}>
             <header>
                 <div className={classes.image}>
-                    <Image src={image} alt={title} fill /> { /* fill property is for when we dont want to set height and width manully but automatically by real dimension of image*/}
+                    <Image  alt={title} fill /> { /* fill property is for when we dont want to set height and width manully but automatically by real dimension of image*/}
                 </div>
                 <div className={classes.headerText}>
                     <h2>{title}</h2>
