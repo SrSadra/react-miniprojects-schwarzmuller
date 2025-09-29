@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import { ChallengesContext } from '../store/challenges-context.jsx';
 import ChallengeItem from './ChallengeItem.jsx';
 import ChallengeTabs from './ChallengeTabs.jsx';
+import { AnimatePresence , motion} from 'motion/react';
 
 export default function Challenges() {
   const { challenges } = useContext(ChallengesContext);
@@ -40,8 +41,11 @@ export default function Challenges() {
         onSelectType={handleSelectType}
         selectedType={selectedType}
       >
+        <AnimatePresence>
         {displayedChallenges.length > 0 && (
-          <ol className="challenge-items">
+            <motion.ol className="challenge-items" exit={{ y: -30, opacity: 0 }} /*this property here helps for animating removing last item */
+            initial={{y: 0 , opacity: 0}}  animate={{y:-30, opacity: 1 }}> {/*for having animation for appearing every challenge */}
+            <AnimatePresence>
             {displayedChallenges.map((challenge) => (
               <ChallengeItem
                 key={challenge.id}
@@ -50,8 +54,10 @@ export default function Challenges() {
                 isExpanded={expanded === challenge.id}
               />
             ))}
-          </ol>
-        )}
+              </AnimatePresence>
+          </motion.ol>
+          )}
+          </AnimatePresence>
         {displayedChallenges.length === 0 && <p>No challenges found.</p>}
       </ChallengeTabs>
     </div>

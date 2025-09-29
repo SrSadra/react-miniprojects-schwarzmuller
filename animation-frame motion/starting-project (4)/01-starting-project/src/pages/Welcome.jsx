@@ -2,8 +2,15 @@ import { Link } from 'react-router-dom';
 
 import cityImg from '../assets/city.jpg';
 import heroImg from '../assets/hero.png';
+import { useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 
 export default function WelcomePage() {
+  const {scrollY} = useScroll(); // how many pixel we scrolled throgh y axis
+  const cityOpacity = useTransform(scrollY, [0, 200, 300, 500], [1, 0.5, 0.5, 0]); // third argument is what happens when we scroll second argument value
+  // for example if we reach 200 pixels the opacity goes to 0.5
+  const supermanScale = useTransform(scrollY , [0 , 200, 500] , [1 , 1.5 , 2])
+
   return (
     <>
       <header id="welcome-header">
@@ -13,12 +20,13 @@ export default function WelcomePage() {
             Get Started
           </Link>
         </div>
-        <img
+        <motion.img
+          style={{opacity: cityOpacity}}
           src={cityImg}
           alt="A city skyline touched by sunlight"
           id="city-image"
         />
-        <img src={heroImg} alt="A superhero wearing a cape" id="hero-image" />
+        <motion.img src={heroImg} alt="A superhero wearing a cape" id="hero-image" style={{scale: supermanScale}}/>
       </header>
       <main id="welcome-content">
         <section>

@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import * as motion from "motion/react-client"
 
 import { ChallengesContext } from '../store/challenges-context.jsx';
+import { AnimatePresence } from 'motion/react';
 
 export default function ChallengeItem({
   challenge,
@@ -28,7 +29,7 @@ export default function ChallengeItem({
   }
 
   return (
-    <li>
+    <motion.li layout exit={{y: -30 , opacity: 0}}> {/*layout property helps to have animation when an item is deleted */}
       <article className="challenge-item">
         <header>
           <img {...challenge.image} />
@@ -50,16 +51,17 @@ export default function ChallengeItem({
               <motion.span className="challenge-item-details-icon"  animate={{rotate: isExpanded ? 180 : 0}} transition={{duration: 0.3}}>&#9650;</motion.span>
             </button>
           </p>
-
+        <AnimatePresence>
           {isExpanded && (
-            <div>
+            <motion.div initial={{opacity: 0, height: 0}} animate={{opacity:1 , height: "auto"}} exit={{opacity: 0, height: 0}}> {/*to prevent this expanding animate strangely */}
               <p className="challenge-item-description">
                 {challenge.description}
               </p>
-            </div>
-          )}
+            </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </article>
-    </li>
+    </motion.li>
   );
 }

@@ -6,10 +6,11 @@ export default function Modal({ title, children, onClose }) {
     <>
       <div className="backdrop" onClick={onClose} />
       <motion.dialog open className="modal"
-        variants={{
+        variants={{ // this helps if we have multiple args that recieve same value use these variants
           hidden: { y: 30, opacity: 0 },
           visible: { y: 0, opacity: 1 }
-      }}
+        }}
+        
         initial="hidden" animate="visible" transition={{ duration: 0.5 }} exit="hidden">
         <h2>{title}</h2>
         {children}
